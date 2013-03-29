@@ -29,7 +29,7 @@ public class HandPanel extends JPanel
         {
         	Card c = h.get(i);
         	cards[i] = new CardButton(i, this);
-        	cards[i].val = String.valueOf(c.getValue());
+        	cards[i].val = c.getValue();
         	cards[i].suit = c.getSuit();
         	add(cards[i]);
         }
@@ -50,7 +50,7 @@ public class HandPanel extends JPanel
         {
         	Card c = h.get(i);
         	cards[i] = new CardButton(i, this);
-        	cards[i].val = String.valueOf(c.getValue());
+        	cards[i].val = c.getValue();
         	cards[i].suit = c.getSuit();
         	add(cards[i]);
         }
@@ -94,9 +94,9 @@ public class HandPanel extends JPanel
     {
        for(int i = 0; i < cards.length; i++)
         {
-            if(cards[i].val == "-")
+            if(cards[i].val == -1)
             {
-                cards[i].val = ""; //initialised but empty
+                cards[i].val = 0; //initialised but empty
                 return;
             }
         }
@@ -112,11 +112,11 @@ public class HandPanel extends JPanel
     	return selectedCount;
     
     }
-    public void addPlayer(String v, String s)
+    public void addPlayer(int v, String s)
     {
         for(int i = 0; i < cards.length; i++)
         {
-            if(cards[i].val == "-")
+            if(cards[i].val == -1)
             {
                 cards[i].val = v;
                 cards[i].suit = s;
@@ -128,16 +128,16 @@ public class HandPanel extends JPanel
     
     public void removeCard(int pos)
     {
-        if(cards[pos].val != "-")
+        if(cards[pos].val != -1)
         {
-            cards[pos].val = "-";
+            cards[pos].val = 0;
         }
     }
     public void randomCards()
     {
         for(int i = 0; i < cards.length; i++)
         {
-            if(cards[i].val != "-")
+            if(cards[i].val != -1)
             {
                 cards[i].randomCards();
             }
