@@ -169,7 +169,7 @@ public class HandPanel extends JPanel
     
 	public void buttonClicked()
 	{
-		table.setMessages();
+		table.clearMessages();
 	}
     
 }

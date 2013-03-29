@@ -26,14 +26,15 @@ public class PokerGUI extends JFrame {
 	private int gamePosition = 0;
 	private int[] dealerSwaps;
 	private Game game;
-	
+	private TablePanel tp;
+	PokerGUI gui;
 	/**
 	 * Create the frame.
 	 */
-	public PokerGUI(Game game) {
+	public PokerGUI(final Game game) {
 		
         this.game = game;
-
+        
 		setTitle("Pkr5");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 300, 350);
@@ -42,7 +43,7 @@ public class PokerGUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 	
-		gameStart();
+		//gameStart();
 		
 		
 		JMenuBar menuBar = new JMenuBar();		
@@ -69,19 +70,24 @@ public class PokerGUI extends JFrame {
         
         miNewGame.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		//New Game
+        		game.init();
         		gameStart();
+        		pack();
         	}
         });
+        
+        gameStart();
 		
 	}
 	
 	public void gameStart(){
-		TablePanel tp = new TablePanel(this, game);
+		tp = new TablePanel(this, game); //not working as expected on new game.
+		if(tp.getParent() != null) {			
+			contentPane.remove(tp);
+		}
+		
 		contentPane.add(tp);
 		dealerSwaps = game.players.get(0).evaluateTheHand();
-		printWinner(game.getWinner());
-		
 	}
 	
 	
@@ -93,9 +99,9 @@ public class PokerGUI extends JFrame {
 		
 	}
 	
-	public void printWinner(String longname){		
+	public void checkWinner(String longname){		
 		if (longname.equals("dealer"))
-			 JOptionPane.showMessageDialog(this, "This Dealer is winning" 
+			 JOptionPane.showMessageDialog(this, "The Dealer is winning" 
 		     ,"Results of round 1", JOptionPane.PLAIN_MESSAGE);
 		else if (longname.equals("player"))
 			JOptionPane.showMessageDialog(this, "You are winning" 
@@ -106,7 +112,27 @@ public class PokerGUI extends JFrame {
 		return;
 	}
 	
+	public void getWinnerMsg(String longname){		
+		if (longname.equals("dealer"))
+			 JOptionPane.showMessageDialog(this, "The dealer wins" 
+		     ,"Results of round 2", JOptionPane.PLAIN_MESSAGE);
+		else if (longname.equals("player"))
+			JOptionPane.showMessageDialog(this, "Well done, you won!" 
+			     ,"Results of round 2", JOptionPane.PLAIN_MESSAGE);
+		else
+		JOptionPane.showMessageDialog(this, "Game tied" 
+			     ,"Results of round 2", JOptionPane.PLAIN_MESSAGE);
+		return;
+	}
 	
+	public int getGamePosition(){
+		return gamePosition;
+	
+	}
+	
+	public void setGamePosition(int x){
+		gamePosition = x;
+	}
 	
 	
 	public void display() {

@@ -41,13 +41,38 @@ public class TablePanel extends JPanel implements ActionListener {
 		setLayout(layout);
         gbc.fill = GridBagConstraints.BOTH;
         gbc.insets = new Insets(15, 15, 15, 15);
-        addPlayers();
-        
+        addPlayers(false);
+        addMessage();
+        addChangeButton();
+        gui.setGamePosition(1);
+        gui.checkWinner(game.getWinner());
+        revalidate();
+        repaint();
 	}
 	
-	public void addPlayers(){
+	private void addMessage(){
 		
-		player1Hand = new HandPanel(this, game.players.get(0), false);
+		messages = new JLabel("Select up to 3 cards to change");
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.gridheight = 1;
+        add(messages, gbc);
+		
+	}
+	private void addChangeButton(){
+		ChangeButton = new JButton(CHANGE);
+        ChangeButton.addActionListener(this);
+        ChangeButton.setVisible(false);
+        ChangeButton.setEnabled(false);
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.gridheight = 1;
+        add(ChangeButton, gbc);
+		
+	}
+	public void addPlayers(boolean showDealer){
+		
+		player1Hand = new HandPanel(this, game.players.get(0), showDealer);
 		gbc.gridx = 0;
 		gbc.gridy = 0;
         add(player1Hand, gbc);
@@ -56,22 +81,8 @@ public class TablePanel extends JPanel implements ActionListener {
 		gbc.gridx = 0;
 		gbc.gridy = 3;
         add(player2Hand, gbc);
-        
-        messages = new JLabel("Select up to 3 cards to change");
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        gbc.gridheight = 1;
-        add(messages, gbc);
-        
-        ChangeButton = new JButton(CHANGE);
-        ChangeButton.addActionListener(this);
-        ChangeButton.setVisible(false);
-        ChangeButton.setEnabled(false);
-        gbc.gridx = 0;
-        gbc.gridy = 2;
-        gbc.gridheight = 1;
-        add(ChangeButton, gbc);
-        
+        revalidate();
+        repaint();
 	}
 	
 	public void actionPerformed(ActionEvent e)
@@ -93,43 +104,30 @@ public class TablePanel extends JPanel implements ActionListener {
 	        	
 	        }
 	        gui.swapPlayersCards(swaps);
-	       
-	        player1Hand = new HandPanel(this, game.players.get(0), true);	        
-	        player2Hand = new HandPanel(this, game.players.get(1), true);
+	        remove(player1Hand);
+	        remove(player2Hand);
+	        addPlayers(true);
+	        removeButton();
+	        gui.setGamePosition(2);
 	        
-	        repaint();
+	        gui.getWinnerMsg(game.getWinner());
 	        
-        	
+	        changeMessage(game.getWinner());
+	
         }
     }
 	public void changeMessage(String msg){
-		
-	messages.setText(msg);
-	
+		messages.setText(msg);
 	}
-	//More than one Computer player
-	public void addPlayers(int cpuPlayers)
-    {
-		/*if(cpuPlayers >3){ //Max 4 players (3 computer 1 human)
-			cpuPlayers = 3;
-		}
-		for(int i = 1; i <= cpuPlayers; i++){
-			CardButton[] hand = new CardButton[5];
-			HandPanel handContainer = new HandPanel(hand);
-			for(int c = 0; c < 5; c++)
-	        {
-	        	handContainer.addCard();
-	        }
-			
-			gbc.gridx = 0;
-			gbc.gridy = 0;
-	        add(handContainer, gbc);
-		}*/
-    }
 	
-	public void setMessages() {
+	public void removeButton(){
+		remove(ChangeButton);
+		
+	}
+	
+	public void clearMessages() {
 		if (messages.isVisible())
-		messages.setVisible(false);
+			changeMessage(" ");
 	}
 	
 }
