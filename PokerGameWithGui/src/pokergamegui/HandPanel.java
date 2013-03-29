@@ -104,19 +104,14 @@ public class HandPanel extends JPanel
     }
     
     
-    /*public void addCard(String v, String s)
-    {
-        for(int i = 0; i < cards.length; i++)
-        {
-            if(cards[i].val == "-")
-            {
-                cards[i].val = v;
-                cards[i].suit = s;
-                return;
-            }
-        }
-        return;
-    }*/
+    public void setSelectedCount(int x){
+    	selectedCount = x;
+    
+    }
+    public int getSelectedCount(int x){
+    	return selectedCount;
+    
+    }
     public void addPlayer(String v, String s)
     {
         for(int i = 0; i < cards.length; i++)
@@ -168,7 +163,7 @@ public class HandPanel extends JPanel
 	}
     
 	public void buttonClicked()
-	{
+	{	if(selectedCount <=3)
 		table.clearMessages();
 	}
     

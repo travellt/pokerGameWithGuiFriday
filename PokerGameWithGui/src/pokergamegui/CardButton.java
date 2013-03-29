@@ -153,7 +153,7 @@ class CardButton extends JComponent implements MouseListener
     public void mouseEntered(MouseEvent e)
     {
         mouseEntered = true;
-        if(val != "-" && hand.enabled)
+        if(val != "-" && hand.enabled && hand.selectedCount <3)
         {
             setCursor(new Cursor(Cursor.HAND_CURSOR));
         }
@@ -174,7 +174,7 @@ class CardButton extends JComponent implements MouseListener
     public void mouseReleased(MouseEvent e)
     {
         mousePressed = false;
-        if(val != "" && hand.enabled && hand.selectedCount <3)
+        if(val != "" && hand.enabled )
         {
         	
         	hand.selectCard(pos);

@@ -109,7 +109,8 @@ public class TablePanel extends JPanel implements ActionListener {
 	        addPlayers(true);
 	        removeButton();
 	        gui.setGamePosition(2);
-	        
+	        player1Hand.setSelectedCount(5);
+	        player2Hand.setSelectedCount(5);
 	        gui.getWinnerMsg(game.getWinner());
 	        
 	        changeMessage(game.getWinner());
