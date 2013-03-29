@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.BoxLayout;
+import javax.swing.JOptionPane;
 import javax.swing.KeyStroke;
 import javax.swing.SpringLayout;
 import javax.swing.JToolBar;
@@ -79,8 +80,8 @@ public class PokerGUI extends JFrame {
 		TablePanel tp = new TablePanel(this, game);
 		contentPane.add(tp);
 		dealerSwaps = game.players.get(0).evaluateTheHand();
-		String winner = game.getWinner().getClass().getName();
-		System.out.println(winner.getClass().getName());
+		printWinner(game.getWinner());
+		
 	}
 	
 	
@@ -91,6 +92,20 @@ public class PokerGUI extends JFrame {
 		 game.players.get(0).swapCards(dealerSwaps, game.getDeck());
 		
 	}
+	
+	public void printWinner(String longname){		
+		if (longname.equals("dealer"))
+			 JOptionPane.showMessageDialog(this, "This Dealer is winning" 
+		     ,"Results of round 1", JOptionPane.PLAIN_MESSAGE);
+		else if (longname.equals("player"))
+			JOptionPane.showMessageDialog(this, "You are winning" 
+			     ,"Results of round 1", JOptionPane.PLAIN_MESSAGE);
+		else
+		JOptionPane.showMessageDialog(this, "Round 1 is a draw" 
+			     ,"Results of round 1", JOptionPane.PLAIN_MESSAGE);
+		return;
+	}
+	
 	
 	
 	
