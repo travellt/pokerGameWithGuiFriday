@@ -239,22 +239,24 @@ public class DealerAI {
 						temphand.add(tempdeck.get(j));
 					else temphand.add(hand.get(k));
 				}
+				
 				Hand temphand2 = new Hand();
 				for (int z = 0; z < hand.size(); z++)
 					temphand2.add(temphand.get(z));
 				temphand2.add(hand.get(cardi));
-				SpecialDeck tempdeck2 = new SpecialDeck(temphand2);
+				
 				for (int l = 0; l < 46; l++){
-					temphand.setElementAt(tempdeck2.get(l), cardm);
+					SpecialDeck tempdeck2 = new SpecialDeck(temphand2);
+					temphand.setElementAt(tempdeck2.getTopCard(), cardm);
 				Hand temphand3 = new Hand();
 				for (int z = 0; z < hand.size(); z++)
 					temphand3.add(hand.get(z));
 				temphand3.add(hand.get(cardi));
 				temphand3.add(hand.get(cardm));
-				SpecialDeck tempdeck3 = new SpecialDeck(temphand3);
+				//SpecialDeck tempdeck3 = new SpecialDeck(temphand3);
 				for (int m = 0; m < 45; m ++){
 					
-					temphand.setElementAt(tempdeck3.get(m), cardn);
+					temphand.setElementAt(tempdeck2.getTopCard(), cardn);
 					int temphandrank = HandEvaluator.assessHand(temphand);
 					int temprankdiff = temphandrank - currentrank;
 					rankdiffifswapped = rankdiffifswapped + temprankdiff;
