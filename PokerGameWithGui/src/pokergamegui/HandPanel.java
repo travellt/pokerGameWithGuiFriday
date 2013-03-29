@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class HandPanel extends JPanel
 {
+	
     private static final long serialVersionUID = 1L;
     public final String DECKBG = "\u272A";  
     public CardButton[] cards = new CardButton[5];
@@ -143,8 +144,12 @@ public class HandPanel extends JPanel
             }
         }
     }
+    
+   
+    
 	public void selectCard(int pos) {
-		
+	
+	
 		if(cards[pos].selected){
 			cards[pos].selected = false;
 			selectedCount--;
@@ -166,5 +171,7 @@ public class HandPanel extends JPanel
 	{	if(selectedCount <=3)
 		table.clearMessages();
 	}
+	
+	
     
 }

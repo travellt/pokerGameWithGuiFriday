@@ -25,6 +25,7 @@ public class TablePanel extends JPanel implements ActionListener {
 	private GridBagLayout layout = new GridBagLayout();
 	private GridBagConstraints gbc = new GridBagConstraints();
 
+	
 	private PokerGUI gui;
 	private Game game;
 	
@@ -48,6 +49,7 @@ public class TablePanel extends JPanel implements ActionListener {
         gui.checkWinner(game.getWinner());
         revalidate();
         repaint();
+        
 	}
 	
 	private void addMessage(){
@@ -72,7 +74,7 @@ public class TablePanel extends JPanel implements ActionListener {
 	}
 	public void addPlayers(boolean showDealer){
 		
-		player1Hand = new HandPanel(this, game.players.get(0), showDealer);
+		player1Hand = new HandPanel(this, game.players.get(0), true);//showDealer in place of ture
 		gbc.gridx = 0;
 		gbc.gridy = 0;
         add(player1Hand, gbc);
@@ -130,5 +132,14 @@ public class TablePanel extends JPanel implements ActionListener {
 		if (messages.isVisible())
 			changeMessage(" ");
 	}
+
+	public HandPanel getPlayer2Hand() {
+		// TODO Auto-generated method stub
+		return player2Hand;
+	}
+
+	
+
+	
 	
 }

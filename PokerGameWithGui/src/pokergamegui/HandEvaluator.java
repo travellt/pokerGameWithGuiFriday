@@ -43,7 +43,7 @@ public static int assessHand(Hand hand){
  }
  static boolean isThereAStraight(Hand hand){
      
-	 if (hand.get(0).getValue() == 1 && hand.get(1).getValue() == 2 && hand.get(2).getValue() == 3 && hand.get(3).getValue() == 4 && hand.get(4).getValue() == 14)
+	 if (hand.get(0).getValue() == 2 && hand.get(1).getValue() == 3 && hand.get(2).getValue() == 4 && hand.get(3).getValue() == 5 && hand.get(4).getValue() == 14)
 		 return true;
 	 
 	 for(int x = 0;x < hand.size()-1; x++) // now we look for a difference of one between sequential cards
@@ -64,29 +64,21 @@ public static int assessHand(Hand hand){
  }
 
  static boolean isThereAFour(Hand hand) {
-     for (int z =0; z < hand.size();z++)
-     {int count = 0; 
-      for(int y=0;y < hand.size();y++)
-            {
-                 if (hand.get(z).getValue() == hand.get(y).getValue())
-                 count++;
-                 if (count == 4)
-                 return true; // four of a kind
-            }}   
-return false;
+     for (int z = 0; z < hand.size(); z++){
+    	 int count = 0; 
+    	 for(int y = 0; y < hand.size() ; y++){
+    		 if (hand.get(z).getValue() == hand.get(y).getValue())
+    			 count++;
+    		 if (count == 4)
+    			 return true; // four of a kind
+    	 }
+     }   
+     return false;
 }
 
  static boolean isThereAThree(Hand hand) {
      
-     for(int x = 1;x < hand.size(); x++){
-     if(hand.get(x).getValue() < hand.get(x-1).getValue())
-         {
-             Card card1 = hand.get(x);
-             Card card2 = hand.get(x-1);
-             hand.setElementAt(card2, x);
-             hand.setElementAt(card1, x-1);
-         }}
-      for (int x =0; x < hand.size();x++){
+     for (int x = 0; x < hand.size();x++){
             int count = 0; 
             for(int y=0;y < hand.size();y++)
             {
@@ -130,29 +122,6 @@ return false;
      else return false;        
  }
  
- static void orderHand(Hand testHand)       
- {
-     while (true){
-     for (int x = 1; x < testHand.size();x++){
-     if (testHand.get(x).getValue() < testHand.get(x-1).getValue())
-         {
-              Card card1 = testHand.get(x);
-              Card card2 = testHand.get(x-1);
-              testHand.setElementAt(card2, x);
-              testHand.setElementAt(card1, x-1);
-              
-         }
-     }
-     int count = 0;
-     for (int x = 1; x < testHand.size();x++){
-     if (testHand.get(x).getValue() < testHand.get(x-1).getValue())
-     count++;
-     }
-     if (count == 0) break;        
-   }
- }
- 
-
 
 public static String drawnHand(int rank,PokerGamePerson dealer,PokerGamePerson player){
 	

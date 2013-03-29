@@ -29,6 +29,10 @@ public class Game {
        init();
     }
     
+    public void newDeck(){
+    	deck = new Deck();
+    	deck.shuffleTheCards();
+    }
     
     public void init(){
     	players = new Vector<PokerGamePerson>();
@@ -73,9 +77,9 @@ public class Game {
     
    public String getWinner() {
 	   if (HandEvaluator.assessHand(players.get(0).getHand()) > HandEvaluator.assessHand(players.get(1).getHand()))
-		   return "player";
-	   else if (HandEvaluator.assessHand(players.get(0).getHand()) < HandEvaluator.assessHand(players.get(1).getHand()))
 		   return "dealer";
+	   else if (HandEvaluator.assessHand(players.get(0).getHand()) < HandEvaluator.assessHand(players.get(1).getHand()))
+		   return "player";
 	   else return HandEvaluator.drawnHand(HandEvaluator.assessHand(players.get(0).getHand()),players.get(0),players.get(1));
    } 
  

@@ -34,7 +34,7 @@ public class DealerAI {
              * 1,2 or 3 cards. The double returns the effect on rank of the current 
              * hand for making the specified number of changes
              */ 
-		 if (currentrank >= 4)
+		if (currentrank >= 4)
 				return swapcardsnocards;
 
 		if (currentrank == 2){
@@ -232,13 +232,13 @@ public class DealerAI {
 			
 		Double rankdiffifswapped = 0.0;
 		SpecialDeck tempdeck = new SpecialDeck(hand);
-			for (int j = 0; j < 47 ; j++){
-                            Hand temphand = new Hand();
+		for (int j = 0; j < 47 ; j++){
+                Hand temphand = new Hand();
 				for (int k = 0; k < hand.size(); k++){
 					if (k == cardi)
 						temphand.add(tempdeck.get(j));
 					else temphand.add(hand.get(k));
-					}
+				}
 				Hand temphand2 = new Hand();
 				for (int z = 0; z < hand.size(); z++)
 					temphand2.add(temphand.get(z));
@@ -249,9 +249,9 @@ public class DealerAI {
 				Hand temphand3 = new Hand();
 				for (int z = 0; z < hand.size(); z++)
 					temphand3.add(hand.get(z));
-					temphand3.add(hand.get(cardi));
-					temphand3.add(hand.get(cardm));
-					SpecialDeck tempdeck3 = new SpecialDeck(temphand3);
+				temphand3.add(hand.get(cardi));
+				temphand3.add(hand.get(cardm));
+				SpecialDeck tempdeck3 = new SpecialDeck(temphand3);
 				for (int m = 0; m < 45; m ++){
 					
 					temphand.setElementAt(tempdeck3.get(m), cardn);

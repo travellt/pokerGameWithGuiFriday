@@ -28,7 +28,7 @@ public SpecialDeck(Hand hand)
         				addit = 1;
         		}
         		if (addit == 0)
-        			deck.add(tempcard); // add the cards of each suite in order
+        			deck.add(tempcard); // add the cards of each suit in order
         	}
         
 }

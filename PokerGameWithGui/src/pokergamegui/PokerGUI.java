@@ -24,7 +24,8 @@ public class PokerGUI extends JFrame {
 
 	private JPanel contentPane;
 	private int gamePosition = 0;
-	private int[] dealerSwaps;
+	
+	private int[] dealerswaps;
 	private Game game;
 	private TablePanel tp;
 	PokerGUI gui;
@@ -77,17 +78,19 @@ public class PokerGUI extends JFrame {
         });
         
         gameStart();
-		
+        
 	}
 	
 	public void gameStart(){
-		tp = new TablePanel(this, game); //not working as expected on new game.
-		if(tp.getParent() != null) {			
+		
+		if(tp != null) {			
 			contentPane.remove(tp);
+			game.newDeck();
 		}
 		
+		tp = new TablePanel(this, game); //not working as expected on new game.
 		contentPane.add(tp);
-		dealerSwaps = game.players.get(0).evaluateTheHand();
+		dealerswaps = game.players.get(0).evaluateTheHand();
 	}
 	
 	
@@ -95,10 +98,12 @@ public class PokerGUI extends JFrame {
 		
 	
 		 game.players.get(1).swapCards(swaps, game.getDeck());
-		 game.players.get(0).swapCards(dealerSwaps, game.getDeck());
+		 game.players.get(0).swapCards(dealerswaps, game.getDeck());
 		
 	}
 	
+	
+
 	public void checkWinner(String longname){		
 		if (longname.equals("dealer"))
 			 JOptionPane.showMessageDialog(this, "The Dealer is winning" 
@@ -109,7 +114,9 @@ public class PokerGUI extends JFrame {
 		else
 		JOptionPane.showMessageDialog(this, "Round 1 is a draw" 
 			     ,"Results of round 1", JOptionPane.PLAIN_MESSAGE);
+		
 		return;
+		
 	}
 	
 	public void getWinnerMsg(String longname){		
@@ -142,4 +149,5 @@ public class PokerGUI extends JFrame {
 		   setVisible(false);
 		   dispose();
 	}
+	
 }

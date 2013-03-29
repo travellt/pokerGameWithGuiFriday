@@ -171,8 +171,11 @@ class CardButton extends JComponent implements MouseListener
     public void mouseClicked(MouseEvent e)
     {
     }
+    
+    
     public void mouseEntered(MouseEvent e)
     {
+    	
         mouseEntered = true;
         if(val != -1 && hand.enabled && hand.selectedCount <3)
         {
