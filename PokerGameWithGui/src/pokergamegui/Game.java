@@ -65,12 +65,12 @@ public class Game {
     
     
     
-   public PokerGamePerson getWinner() {
+   public String getWinner() {
 	   if (HandEvaluator.assessHand(players.get(0).getHand()) > HandEvaluator.assessHand(players.get(1).getHand()))
-		   return players.get(0);//add in string for player
+		   return "player";
 	   else if (HandEvaluator.assessHand(players.get(0).getHand()) < HandEvaluator.assessHand(players.get(1).getHand()))
-		   return players.get(1);
-	   else return null;
+		   return "dealer";
+	   else return HandEvaluator.drawnHand(HandEvaluator.assessHand(players.get(0).getHand()),players.get(0),players.get(1));
    }
     
     	/*

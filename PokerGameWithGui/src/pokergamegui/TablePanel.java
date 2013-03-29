@@ -37,32 +37,22 @@ public class TablePanel extends JPanel implements ActionListener {
 	public TablePanel(PokerGUI gui, Game game) {
 		this.gui = gui;
 		this.game = game;
-		//this.players = game.players;
 		
 		setLayout(layout);
         gbc.fill = GridBagConstraints.BOTH;
         gbc.insets = new Insets(15, 15, 15, 15);
         addPlayers();
-        System.out.println("table created " + this);
+        
 	}
 	
-	public void setMessages() {
-        if (messages.isVisible())
-        	messages.setVisible(false);
-    }
-	
-	
 	public void addPlayers(){
-		//addPlayers(1);
 		
-		player1Hand = new HandPanel(this, game.players.get(0), true);
-		
+		player1Hand = new HandPanel(this, game.players.get(0), false);
 		gbc.gridx = 0;
 		gbc.gridy = 0;
         add(player1Hand, gbc);
         
         player2Hand = new HandPanel(this, game.players.get(1), true);
-		
 		gbc.gridx = 0;
 		gbc.gridy = 3;
         add(player2Hand, gbc);
@@ -89,15 +79,9 @@ public class TablePanel extends JPanel implements ActionListener {
         if(e.getActionCommand().equals(CHANGE))
         {
         	
-        	repaint();
-        	player1Hand.repaint();
-        	player2Hand.repaint();
-        	
-        	List<Integer> arr = new ArrayList<Integer>(); // we can’t alter the size of an array. So we need a work around using a List.
-        	System.out.println(player1Hand.cards.length);
-	        for (int x = 0; x < player1Hand.cards.length;x++){
-	        	System.out.println(player1Hand.getCards()[x].getSelected());
-	        	if(player1Hand.cards[x].selected){
+        	List<Integer> arr = new ArrayList<Integer>(); // we cant alter the size of an array. So we need a work around using a List.
+	        for (int x = 0; x < player2Hand.cards.length;x++){	        	
+	        	if(player2Hand.cards[x].selected){
 	        		arr.add(new Integer(x));
 	        	}
 	        }
@@ -109,13 +93,11 @@ public class TablePanel extends JPanel implements ActionListener {
 	        	
 	        }
 	        gui.swapPlayersCards(swaps);
-	        
 	       
 	        player1Hand = new HandPanel(this, game.players.get(0), true);	        
 	        player2Hand = new HandPanel(this, game.players.get(1), true);
 	        
 	        repaint();
-	        
 	        
         	
         }
@@ -144,4 +126,10 @@ public class TablePanel extends JPanel implements ActionListener {
 	        add(handContainer, gbc);
 		}*/
     }
+	
+	public void setMessages() {
+		if (messages.isVisible())
+		messages.setVisible(false);
+	}
+	
 }

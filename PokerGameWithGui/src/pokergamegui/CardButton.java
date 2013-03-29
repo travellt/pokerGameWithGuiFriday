@@ -146,8 +146,6 @@ class CardButton extends JComponent implements MouseListener
         int numSuits = 4;
         val = String.valueOf((int)(Math.random() * values + 1));
         suit = Suits.values()[(int)(Math.random() * numSuits)].toString();
-        
-        
     }
     public void mouseClicked(MouseEvent e)
     {
@@ -191,10 +189,8 @@ class CardButton extends JComponent implements MouseListener
     }
     private void notifyListeners(MouseEvent e)
     {
-    	
-    	hand.buttonClicked();
-    	
-        ActionEvent evt = new ActionEvent(this, ActionEvent.ACTION_PERFORMED, new String(), e.getWhen(), e.getModifiers());
+        hand.buttonClicked();
+    	ActionEvent evt = new ActionEvent(this, ActionEvent.ACTION_PERFORMED, new String(), e.getWhen(), e.getModifiers());
         synchronized(listeners)
         {
             for (int i = 0; i < listeners.size(); i++)

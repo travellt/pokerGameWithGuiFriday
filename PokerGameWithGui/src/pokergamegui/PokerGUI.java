@@ -62,6 +62,7 @@ public class PokerGUI extends JFrame {
         miQuit.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		destroy();
+        		
         	}
         });
         
@@ -73,16 +74,13 @@ public class PokerGUI extends JFrame {
         });
 		
 	}
-
 	
 	public void gameStart(){
 		TablePanel tp = new TablePanel(this, game);
-		
-		//tp.addPlayers();
 		contentPane.add(tp);
 		dealerSwaps = game.players.get(0).evaluateTheHand();
-		
-	
+		String winner = game.getWinner().getClass().getName();
+		System.out.println(winner.getClass().getName());
 	}
 	
 	
@@ -90,7 +88,7 @@ public class PokerGUI extends JFrame {
 		
 	
 		 game.players.get(1).swapCards(swaps, game.getDeck());
-		 game.players.get(1).swapCards(dealerSwaps, game.getDeck());
+		 game.players.get(0).swapCards(dealerSwaps, game.getDeck());
 		
 	}
 	

@@ -41,10 +41,6 @@ public class HandPanel extends JPanel
     
     }
     
-    public void buttonClicked() {
-        table.setMessages();
-    }
-    
     public HandPanel(TablePanel table,PokerGamePerson p)
     {
     	
@@ -169,10 +165,11 @@ public class HandPanel extends JPanel
 			table.ChangeButton.setVisible(true);
 			table.ChangeButton.setEnabled(selectedCount >0  && selectedCount <=3);
 		}
-		System.out.println(cards[pos] + " this card has been selected " + cards[pos].selected);
-		
-		
 	}
     
+	public void buttonClicked()
+	{
+		table.setMessages();
+	}
     
 }
