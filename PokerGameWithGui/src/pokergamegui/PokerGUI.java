@@ -78,7 +78,7 @@ public class PokerGUI extends JFrame {
 	public void gameStart(){
 		TablePanel tp = new TablePanel(this, game);
 		
-		tp.addPlayers();
+		//tp.addPlayers();
 		contentPane.add(tp);
 		dealerSwaps = game.players.get(0).evaluateTheHand();
 		

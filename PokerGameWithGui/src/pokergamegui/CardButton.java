@@ -191,6 +191,9 @@ class CardButton extends JComponent implements MouseListener
     }
     private void notifyListeners(MouseEvent e)
     {
+    	
+    	hand.buttonClicked();
+    	
         ActionEvent evt = new ActionEvent(this, ActionEvent.ACTION_PERFORMED, new String(), e.getWhen(), e.getModifiers());
         synchronized(listeners)
         {

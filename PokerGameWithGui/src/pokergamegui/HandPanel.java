@@ -41,6 +41,10 @@ public class HandPanel extends JPanel
     
     }
     
+    public void buttonClicked() {
+        table.setMessages();
+    }
+    
     public HandPanel(TablePanel table,PokerGamePerson p)
     {
     	

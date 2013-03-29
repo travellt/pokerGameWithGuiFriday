@@ -46,6 +46,12 @@ public class TablePanel extends JPanel implements ActionListener {
         System.out.println("table created " + this);
 	}
 	
+	public void setMessages() {
+        if (messages.isVisible())
+        	messages.setVisible(false);
+    }
+	
+	
 	public void addPlayers(){
 		//addPlayers(1);
 		
