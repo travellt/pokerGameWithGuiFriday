@@ -43,7 +43,7 @@ public class PokerGUI extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-	
+		setLocationRelativeTo(null);
 		//gameStart();
 		
 		
@@ -90,10 +90,14 @@ public class PokerGUI extends JFrame {
 		
 		tp = new TablePanel(this, game); //not working as expected on new game.
 		contentPane.add(tp);
-		dealerswaps = game.players.get(0).evaluateTheHand();
+		pack();
+		
 	}
 	
 	
+	public void processDealerSwap(){
+		dealerswaps = game.players.get(0).evaluateTheHand();
+	}
 	public void swapPlayersCards(int[] swaps){
 		
 	
@@ -119,17 +123,24 @@ public class PokerGUI extends JFrame {
 		
 	}
 	
-	public void getWinnerMsg(String longname){		
-		if (longname.equals("dealer"))
+	public String  getWinnerMsg(String longname){		
+		String returnString = "";
+		if (longname.equals("dealer")){
 			 JOptionPane.showMessageDialog(this, "The dealer wins" 
 		     ,"Results of round 2", JOptionPane.PLAIN_MESSAGE);
-		else if (longname.equals("player"))
+			 returnString = "The dealer won";
+		}
+		else if (longname.equals("player")){
 			JOptionPane.showMessageDialog(this, "Well done, you won!" 
 			     ,"Results of round 2", JOptionPane.PLAIN_MESSAGE);
-		else
+			returnString = "You won!";
+		}
+		else{
 		JOptionPane.showMessageDialog(this, "Game tied" 
 			     ,"Results of round 2", JOptionPane.PLAIN_MESSAGE);
-		return;
+			returnString = "Game ended in a draw";
+		}
+		return returnString;
 	}
 	
 	public int getGamePosition(){

@@ -23,9 +23,9 @@ class CardButton extends JComponent implements MouseListener
 {
     private static final long serialVersionUID = 1L;
 
-    private Dimension cardSize = new Dimension(40,60);
-    final Font fnt1 = new Font("SansSerif", Font.BOLD, 18);
-    final Font fnt2 = new Font("SansSerif", Font.BOLD, 11);
+    private Dimension cardSize = new Dimension(50,70);
+    final Font fnt1 = new Font("SansSerif", Font.BOLD, 20);
+    final Font fnt2 = new Font("SansSerif", Font.BOLD, 13);
     
     private ArrayList<ActionListener> listeners = new ArrayList<ActionListener>();
     private boolean mouseEntered = false;

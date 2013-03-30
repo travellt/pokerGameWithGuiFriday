@@ -36,9 +36,11 @@ public class TablePanel extends JPanel implements ActionListener {
 	private HandPanel player1Hand, player2Hand;
 	
 	public TablePanel(PokerGUI gui, Game game) {
+		
 		this.gui = gui;
 		this.game = game;
 		
+		gui.processDealerSwap(); //process dealer AI (cards to swap)
 		setLayout(layout);
         gbc.fill = GridBagConstraints.BOTH;
         gbc.insets = new Insets(15, 15, 15, 15);
@@ -74,7 +76,7 @@ public class TablePanel extends JPanel implements ActionListener {
 	}
 	public void addPlayers(boolean showDealer){
 		
-		player1Hand = new HandPanel(this, game.players.get(0), true);//showDealer in place of ture
+		player1Hand = new HandPanel(this, game.players.get(0), showDealer);//showDealer in place of true
 		gbc.gridx = 0;
 		gbc.gridy = 0;
         add(player1Hand, gbc);
@@ -113,9 +115,9 @@ public class TablePanel extends JPanel implements ActionListener {
 	        gui.setGamePosition(2);
 	        player1Hand.setSelectedCount(5);
 	        player2Hand.setSelectedCount(5);
-	        gui.getWinnerMsg(game.getWinner());
+	        String winnerMsg = gui.getWinnerMsg(game.getWinner());
 	        
-	        changeMessage(game.getWinner());
+	        changeMessage(winnerMsg);
 	
         }
     }
