@@ -201,24 +201,25 @@ public class DealerAI {
 	private  Double rankDiffIfSwapped(int cardi, int cardm) {
 		
 		Double rankdiffifswapped = 0.0;
-		
+		SpecialDeck tempdeck = new SpecialDeck(hand);
 		for (int j = 0; j < 47 ; j++){
-			SpecialDeck tempdeck = new SpecialDeck(hand);
+			
 			Hand temphand = new Hand();
 			for (int k = 0; k < hand.size(); k++){
 				if (k == cardi)
-					temphand.add(tempdeck.get(k));
+					temphand.add(tempdeck.returnTheTopCard());
 				else temphand.add(hand.get(k));
 				}
-			Hand temphand2 = new Hand();
+			/*Hand temphand2 = new Hand();
 			for (int z = 0; z < hand.size(); z++)
 				temphand2.add(temphand.get(z));
 			temphand2.add(hand.get(cardi));
-			SpecialDeck tempdeck2 = new SpecialDeck(temphand2);
+			*/
+			//SpecialDeck tempdeck2 = new SpecialDeck(temphand2);
 			
-				for (int l = 0; l < 46; l++){
+				for (int l = 0; l < tempdeck.cardsInDeck(); l++){
 					
-				temphand.setElementAt(tempdeck2.get(l), cardm);
+				temphand.setElementAt(tempdeck.get(l), cardm);
 				int temphandrank = HandEvaluator.assessHand(temphand);
 				int temprankdiff = temphandrank - currentrank;
 				rankdiffifswapped = rankdiffifswapped + temprankdiff;
@@ -233,31 +234,31 @@ public class DealerAI {
 			
 		Double rankdiffifswapped = 0.0;
 		SpecialDeck tempdeck = new SpecialDeck(hand);
-		for (int j = 0; j < 47 ; j++){
+		for (int j = 0; 0 < tempdeck.cardsInDeck() ; j++){
                 Hand temphand = new Hand();
 				for (int k = 0; k < hand.size(); k++){
 					if (k == cardi)
-						temphand.add(tempdeck.get(j));
+						temphand.add(tempdeck.returnTheTopCard());
 					else temphand.add(hand.get(k));
 				}
 				
-				Hand temphand2 = new Hand();
+				/*Hand temphand2 = new Hand();
 				for (int z = 0; z < hand.size(); z++)
 					temphand2.add(temphand.get(z));
 				temphand2.add(hand.get(cardi));
-				
-				for (int l = 0; l < 46; l++){
-					SpecialDeck tempdeck2 = new SpecialDeck(temphand2);
-					temphand.setElementAt(tempdeck2.get(l), cardm);
-				Hand temphand3 = new Hand();
+				*/
+				for (int l = tempdeck.cardsInDeck() - 1 ; l >= 1; l--){
+					//SpecialDeck tempdeck2 = new SpecialDeck(temphand2);
+					temphand.setElementAt(tempdeck.get(l), cardm);
+				/*Hand temphand3 = new Hand();
 				for (int z = 0; z < hand.size(); z++)
 					temphand3.add(hand.get(z));
 				temphand3.add(hand.get(cardi));
 				temphand3.add(hand.get(cardm));
 				SpecialDeck tempdeck3 = new SpecialDeck(temphand3);
-				for (int m = 0; m < 45; m ++){
-					
-					temphand.setElementAt(tempdeck3.get(m), cardn);
+				*/
+				for (int m = l - 1 ; m >= 0 ; m--){
+					temphand.setElementAt(tempdeck.get(m), cardn);
 					int temphandrank = HandEvaluator.assessHand(temphand);
 					int temprankdiff = temphandrank - currentrank;
 					rankdiffifswapped = rankdiffifswapped + temprankdiff;
