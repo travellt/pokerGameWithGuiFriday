@@ -74,7 +74,7 @@ public class TablePanel extends JPanel implements ActionListener {
 	}
 	public void addPlayers(boolean showDealer){
 		
-		player1Hand = new HandPanel(this, game.players.get(0), true);//showDealer in place of ture
+		player1Hand = new HandPanel(this, game.players.get(0), showDealer);
 		gbc.gridx = 0;
 		gbc.gridy = 0;
         add(player1Hand, gbc);
