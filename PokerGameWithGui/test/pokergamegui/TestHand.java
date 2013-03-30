@@ -15,7 +15,7 @@ public class TestHand extends Hand{
             
             
 	    if (handtype.equals("highcard")){
-	    Card card1 = new Card("Hearts", 4);
+	    Card card1 = new Card("Hearts", 14);
 		Card card2 = new Card("Hearts", 12);
 		Card card3 = new Card("Diamonds", 11);
 		Card card4 = new Card("Spades", 10);
@@ -37,7 +37,7 @@ public class TestHand extends Hand{
 	    	Card card2 = new Card("Hearts", 13);
 	    	Card card3 = new Card("Hearts", 2);
 	    	Card card4 = new Card("Hearts", 3);
-	    	Card card5 = new Card("Clubs", 4);
+	    	Card card5 = new Card("Clubs", 9);
 	    	
 	    		
 	    	

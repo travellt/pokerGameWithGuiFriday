@@ -23,10 +23,10 @@ public class DealerAITest {
 		DealerAI classUnderTest = new DealerAI(myhand);
 		Vector<Card> swapcards = classUnderTest.whichCardsShouldISwap();
 		
-		assertEquals("Number of cards wrong", 3, swapcards.size());
-		assertEquals("First card wrong", myhand.get(2).getValue(), swapcards.get(0).getValue());	
-		assertEquals("Second card wrong", myhand.get(3).getValue(), swapcards.get(1).getValue());	
-		assertEquals("Third card wrong", myhand.get(4).getValue(), swapcards.get(2).getValue());	
+		assertEquals("Number of cards wrong", 1, swapcards.size());
+		assertEquals("First card wrong", myhand.get(4).getValue(), swapcards.get(0).getValue());	
+		//assertEquals("Second card wrong", myhand.get(3).getValue(), swapcards.get(1).getValue());	
+		//assertEquals("Third card wrong", myhand.get(4).getValue(), swapcards.get(2).getValue());	
 	
 	}
 	
@@ -50,10 +50,10 @@ public class DealerAITest {
 		DealerAI classUnderTest = new DealerAI(myhand);
 		Vector<Card> swapcards = classUnderTest.whichCardsShouldISwap();
 		
-		assertEquals("wrong number to swap", 3, swapcards.size());
+		assertEquals("wrong number to swap", 1, swapcards.size());
 		assertEquals("first swap card wrong", myhand.get(2).getSuit(), swapcards.get(0).getSuit());
-		assertEquals("Second card wrong", myhand.get(3).getValue(), swapcards.get(1).getValue());	
-		assertEquals("Third card wrong", myhand.get(4).getValue(), swapcards.get(2).getValue());
+		//assertEquals("Second card wrong", myhand.get(3).getValue(), swapcards.get(1).getValue());	
+		//assertEquals("Third card wrong", myhand.get(4).getValue(), swapcards.get(2).getValue());
 	}
 	
 	@Test

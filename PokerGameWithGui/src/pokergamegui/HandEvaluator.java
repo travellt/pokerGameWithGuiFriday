@@ -277,7 +277,7 @@ public static String drawnHand(int rank,PokerGamePerson dealer,PokerGamePerson p
                      int dealerPair = 0;
                      int playerPair = 0;
                      
-                     for (int x = 0; x <= playerHand.size()-1;x++){
+                     for (int x = 0; x <= playerHand.size()-1 ;x++){
                     	 for (int y = 0; y <= playerHand.size()-1;y++){
                     		 if (playerHand.get(y).getValue() == playerHand.get(x).getValue() && x != y)
                     			 playerPair = playerHand.get(y).getValue();
@@ -343,25 +343,15 @@ public static String drawnHand(int rank,PokerGamePerson dealer,PokerGamePerson p
                     
                     
                 case 0:{
-                	for (int x = 0 ; x < dealerHand.size() ; x++){
-                		int count = 0;
-                		for (int y = 0; y < playerHand.size();y++){
-                			if (dealerHand.get(x).getValue() > playerHand.get(y).getValue())
-                				count++;
-                			if (count == 5)
-                				return dealerreturn;
+                	
+                	                		
+                	for (int x = 4 ; x > 0 ; x--){
+                		if (dealerHand.get(x).getValue() > playerHand.get(x).getValue())
+                			return dealerreturn;
+                		else if (dealerHand.get(x).getValue() < playerHand.get(x).getValue())
+                			return playerreturn;
                 		}
-                	}
-
-                	for (int x = 0 ; x < playerHand.size() ; x++){
-                		int count = 0;
-                		for (int y = 0; y < dealerHand.size();y++){
-                			if (dealerHand.get(x).getValue() < playerHand.get(y).getValue())
-                				count++;
-                			if (count == 5)
-                				return playerreturn;
-                		}
-                	}
+                	
                 				
                 	return drawreturn;  
                 }
@@ -374,6 +364,5 @@ public static String drawnHand(int rank,PokerGamePerson dealer,PokerGamePerson p
 
 
 }}
-
 
 

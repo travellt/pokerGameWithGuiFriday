@@ -52,4 +52,10 @@ public void printDeck()
         System.out.println("Suit of " + deck.elementAt(x).getSuit() + " value of " + deck.elementAt(x).getValue());
 }
 
+public Card returnTheTopCard(){
+	 Card card = deck.get(deck.size()-1);
+	 deck.removeElementAt(deck.size()-1); 
+	 return card;
+	}
+
 }
